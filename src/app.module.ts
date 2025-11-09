@@ -8,10 +8,7 @@ import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     UsersModule,
-    MongooseModule.forRoot(process.env.MONGO_URI!, { // <-- le "!" dit à TypeScript que ce n'est pas undefined
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }),
+    MongooseModule.forRoot(process.env.MONGO_URI!), // <-- le "!" dit que la variable existe
     AuthModule,
   ],
   controllers: [AppController],
