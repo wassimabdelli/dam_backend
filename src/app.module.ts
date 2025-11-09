@@ -6,7 +6,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [UsersModule, MongooseModule.forRoot('mongodb://localhost:27017/dam_backend'),AuthModule],
+  imports: [
+    UsersModule,
+    MongooseModule.forRoot(process.env.MONGO_URI), // <-- Utilisation de la variable d'environnement
+    AuthModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
